@@ -20,6 +20,8 @@ That's all, Enjoy!
 
 No other mods required. The checkbox follows Elin's English, Japanese, or Simplified Chinese language setting. Existing category and word filters still apply.
 
+Japanese and Simplified Chinese translations provided by Codex (AI).
+
 Source: https://github.com/gharkz/StolenGoodsFilter
 [/quote]
 
@@ -35,7 +37,26 @@ Source: https://github.com/gharkz/StolenGoodsFilter
 
 他のMODは不要です。チェックボックスはゲームの言語設定に合わせて英語・日本語・簡体字中国語で表示されます。既存のカテゴリ・単語フィルターも適用されます。
 
+日本語・簡体字中国語の翻訳：Codex（AI翻訳）。
+
 ソースコード: https://github.com/gharkz/StolenGoodsFilter
+[/quote]
+
+[quote]
+向盗贼公会出售赃物、赚取贡献点数时，是否厌倦了在背包里逐个辨认哪些物品是赃物？
+
+现在，你可以设置只接收赃物的随身容器，再也不用费心手动挑选战利品了！
+
+- 在指定的赃物专用小袋或背包中，勾选“仅存放赃物”。
+- 将这些容器的优先度设得比普通随身容器更高，赃物就会优先放入其中。
+
+设置完成，就是这么简单。祝你游戏愉快！
+
+无需其他模组。复选框会根据Elin的语言设置显示为英语、日语或简体中文。现有的类别筛选和关键词筛选仍然有效。
+
+日语和简体中文译文由Codex提供（AI翻译）。
+
+源代码: https://github.com/gharkz/StolenGoodsFilter
 [/quote]
   </description>
   <builtin>false</builtin>

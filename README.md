@@ -2,6 +2,8 @@
 
 An Elin game mod for adding a container configuration toggle for only accepting stolen items.
 
+Japanese and Simplified Chinese translations provided by Codex (AI).
+
 ## Install and use
 
 **[Install on Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3836640580)**
@@ -100,6 +102,8 @@ unchanged when updating. Rebuild the thumbnail with `build_icon.ps1` if desired.
 
 コンテナの振り分け設定に「Only put stolen goods（盗品のみ入れる）」チェックボックスを追加するElin用MODです。
 
+日本語・簡体字中国語の翻訳：Codex（AI翻訳）。
+
 ### インストールと使い方
 
 **[Steamワークショップからインストール](https://steamcommunity.com/sharedfiles/filedetails/?id=3836640580)**
@@ -132,3 +136,46 @@ Windows、.NET SDK、.NET Framework 4.8ターゲットパック、Elin本体が�
 本体更新でパッチ対象が変わった場合は、部分的な適用を取り消してログにエラーを出します。
 MODを外してセーブすると、この追加設定が失われる場合があります。
 アイテムの生成・削除・移動・盗品フラグの解除は行いません。
+
+---
+
+## 简体中文
+
+日语和简体中文译文由Codex提供（AI翻译）。
+
+向盗贼公会出售赃物、赚取贡献点数时，是否厌倦了在背包里逐个辨认哪些物品是赃物？
+
+这个模组可以让你设置只接收赃物的随身容器，再也不用费心手动挑选战利品！
+
+### 安装与使用
+
+**[在Steam创意工坊安装](https://steamcommunity.com/sharedfiles/filedetails/?id=3836640580)**
+
+在创意工坊页面订阅，然后在Elin的模组列表中启用本模组。
+
+- 打开指定小袋或背包的分类设置，勾选“仅存放赃物”。
+- 将该容器的优先度设得比普通随身容器更高，符合条件的赃物就会优先放入其中。
+
+设置完成，祝你游戏愉快！
+
+无需其他模组。复选框根据游戏语言设置显示为英语、日语或简体中文。
+选项位于普通或高级筛选列表下方，默认关闭。现有的类别筛选、关键词筛选和优先度仍然适用。
+手动转移物品和自动拾取设置保持不变。
+
+[三种语言的设置截图](#distribution-settings) · [更新日志](CHANGELOG.md)
+
+已在Elin **23.355**、模组版本 **1.0.1**中测试。
+
+### 手动构建与安装
+
+需要Windows、.NET SDK、.NET Framework 4.8目标包和已安装的Elin。
+请将上方PowerShell命令中的 `ELIN_DIR` 改为实际游戏目录后运行。
+可选安装脚本需要Python 3，会复制DLL、`package.xml` 和 `preview.jpg`，并备份被替换的文件。
+不会自动重启或保存游戏；安装后请正常重启Elin。仓库不包含游戏本体或依赖DLL。
+
+### 保存与兼容性
+
+设置使用独立的JSON属性保存，不占用游戏原有的整数槽位或标记，并支持复制容器设置。
+如果游戏更新导致补丁目标不兼容，模组会移除自身补丁并记录错误。
+移除本模组后保存游戏，可能会丢失这项额外设置。
+本模组不会生成、删除、转移物品，也不会清除赃物标记。
