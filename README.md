@@ -12,13 +12,15 @@ Subscribe on the Workshop page to install through Steam, then enable the mod in 
 
 Open a container's distribution settings and enable **Only put stolen goods**.
 The option appears below either the normal or advanced filter list. It defaults
-to off. Enabled containers accept only items with the game's stolen status;
+to off. The toggle reads **盗品のみ入れる** in Japanese, **仅存放赃物** in
+Simplified Chinese, and **Only put stolen goods** in English or other languages.
+Enabled containers accept only items with the game's stolen status;
 existing category filters, word filters, and priorities still apply. Give your
 stolen-goods container a higher priority to route eligible items there first.
 Manual transfers and automatic pickup settings are unchanged.
 
 Standalone: no other Workshop mods, development bridge, or companion application
-are required. Tested with Elin **23.355**, plugin version **1.0.0**.
+are required. Tested with Elin **23.355**, plugin version **1.0.1**.
 
 ## Build and manual installation
 
@@ -54,7 +56,7 @@ dotnet build tests/Controls.csproj -c Release -p:Platform=AnyCPU
 python -m unittest discover -s tests -p test_package.py -v
 ```
 
-The 15 C# controls cover filter behavior, vanilla-rule composition, persistence,
+The 18 C# controls cover localized labels, filter behavior, vanilla-rule composition, persistence,
 configuration copying, three native routing patch points, and incompatible IL
 rejection. Four Python controls cover release metadata, thumbnail format/size,
 isolated installation, backup preservation, and wrong-package rejection.
@@ -98,11 +100,12 @@ unchanged when updating. Rebuild the thumbnail with `build_icon.ps1` if desired.
 
 コンテナの振り分け設定でチェックを入れると、そのコンテナには盗品だけが入るようになります。
 通常・高度なフィルター一覧の下に表示され、初期状態はオフです。
+チェックボックスはゲームの言語設定に合わせて英語・日本語・簡体字中国語で表示されます。
 既存のカテゴリ・単語フィルターと優先度も適用されます。
 盗品用コンテナの優先度を高くすると、条件に合う盗品が優先的に入ります。
 手動での移動や自動拾得の設定は変更しません。他のMODや開発用ツールは不要です。
 
-Elin **23.355**、MODバージョン **1.0.0**で動作確認しています。
+Elin **23.355**、MODバージョン **1.0.1**で動作確認しています。
 
 ### ビルドと導入
 

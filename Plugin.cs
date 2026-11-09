@@ -11,7 +11,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace StolenGoodsFilter
 {
-    [BepInPlugin(Id, "Stolen Goods Filter", "1.0.0")]
+    [BepInPlugin(Id, "Stolen Goods Filter", "1.0.1")]
     public sealed class Plugin : BaseUnityPlugin
     {
         public const string Id = "gharkz.stolengoodsfilter";
@@ -126,7 +126,17 @@ namespace StolenGoodsFilter
         {
             // The PC's pickup menu reuses ShowDistribution, but is not a destination box.
             if (__instance.owner.Container.IsPC) return;
-            dis.AddToggle("Only put stolen goods", Enabled(data), value => SetEnabled(data, value));
+            dis.AddToggle(ToggleLabel(Lang.langCode), Enabled(data), value => SetEnabled(data, value));
+        }
+
+        public static string ToggleLabel(string languageCode)
+        {
+            switch (languageCode)
+            {
+                case "JP": return "盗品のみ入れる";
+                case "CN": return "仅存放赃物";
+                default: return "Only put stolen goods";
+            }
         }
 
         private static void CopyPostfix(Window.SaveData __instance, Window.SaveData data) => SetEnabled(__instance, Enabled(data));

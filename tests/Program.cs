@@ -34,6 +34,9 @@ internal static class Program
     [MethodImpl(MethodImplOptions.NoInlining)]
     private static void Run()
     {
+        Check(Plugin.ToggleLabel("JP") == "盗品のみ入れる", "Japanese toggle label");
+        Check(Plugin.ToggleLabel("CN") == "仅存放赃物", "Simplified Chinese toggle label");
+        Check(Plugin.ToggleLabel("EN") == "Only put stolen goods" && Plugin.ToggleLabel("unknown") == Plugin.ToggleLabel(null), "English label and unknown-language fallback");
         var data = new Window.SaveData();
         var item = (Thing)FormatterServices.GetUninitializedObject(typeof(Thing));
         item.trait = new NonDecaying();

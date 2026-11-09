@@ -9,8 +9,10 @@
   <visibility>Private</visibility>
   <description>
 Adds an "Only put stolen goods" checkbox to container distribution settings. Enabled containers accept only stolen items, respecting existing filters and priorities. No other mods required.
+UI label follows the game's English, Japanese, or Simplified Chinese language setting.
 
 コンテナの振り分け設定に「盗品のみ入れる」チェックボックスを追加します。有効にしたコンテナには盗品だけが入り、既存のフィルターと優先度も適用されます。他のMODは不要です。
+チェックボックスはゲームの言語設定に合わせて英語・日本語・簡体字中国語で表示されます。
   </description>
   <builtin>false</builtin>
 </Meta>
