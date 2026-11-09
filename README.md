@@ -22,6 +22,14 @@ Manual transfers and automatic pickup settings are unchanged.
 Standalone: no other Workshop mods, development bridge, or companion application
 are required. Tested with Elin **23.355**, plugin version **1.0.1**.
 
+### Distribution settings
+
+| English | 日本語 | 简体中文 |
+| --- | --- | --- |
+| ![English distribution settings](screenshots/distribution-en.png) | ![日本語の振り分け設定](screenshots/distribution-jp.png) | ![简体中文分类设置](screenshots/distribution-cn.png) |
+
+See [CHANGELOG.md](CHANGELOG.md) for release notes in English and Japanese.
+
 ## Build and manual installation
 
 Requirements: Windows, a .NET SDK and the .NET Framework 4.8 targeting pack, and
@@ -97,6 +105,8 @@ unchanged when updating. Rebuild the thumbnail with `build_icon.ps1` if desired.
 **[Steamワークショップからインストール](https://steamcommunity.com/sharedfiles/filedetails/?id=3836640580)**
 
 ワークショップのページでサブスクライブし、ElinのMOD一覧で有効にしてください。
+
+[設定画面のスクリーンショット](#distribution-settings)・[更新履歴](CHANGELOG.md)
 
 コンテナの振り分け設定でチェックを入れると、そのコンテナには盗品だけが入るようになります。
 通常・高度なフィルター一覧の下に表示され、初期状態はオフです。
