@@ -1,0 +1,15 @@
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory)Local.props" Condition="Exists('$(MSBuildThisFileDirectory)Local.props')" />
+  <PropertyGroup>
+    <ElinDir Condition="'$(ElinDir)' == ''">$(ELIN_DIR)</ElinDir>
+    <Deterministic>true</Deterministic>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <PathMap>$(MSBuildThisFileDirectory)=/_/</PathMap>
+  </PropertyGroup>
+  <Target Name="RequireElinInstallation" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="'$(ElinDir)' == ''" Text="Set ELIN_DIR or pass -p:ElinDir=PATH to your Elin installation." />
+    <Error Condition="!Exists('$(ElinDir)/Elin_Data/Managed/Elin.dll')" Text="ElinDir must contain Elin_Data/Managed/Elin.dll." />
+    <Error Condition="!Exists('$(ElinDir)/BepInEx/core/0Harmony.dll')" Text="ElinDir must contain BepInEx/core/0Harmony.dll." />
+  </Target>
+</Project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Meta>
+  <title>Stolen Goods Filter</title>
+  <id>gharkz.stolengoodsfilter</id>
+  <author>gharkz</author>
+  <version>0.23.355</version>
+  <loadPriority>100</loadPriority>
+  <tags>General,QoL,Utility</tags>
+  <visibility>Private</visibility>
+  <description>
+Adds an "Only put stolen goods" checkbox to container distribution settings. Enabled containers accept only stolen items, respecting existing filters and priorities. No other mods required.
+
+コンテナの振り分け設定に「盗品のみ入れる」チェックボックスを追加します。有効にしたコンテナには盗品だけが入り、既存のフィルターと優先度も適用されます。他のMODは不要です。
+  </description>
+  <builtin>false</builtin>
+</Meta>

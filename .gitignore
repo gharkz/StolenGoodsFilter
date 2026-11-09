@@ -1,0 +1,15 @@
+bin/
+obj/
+__pycache__/
+*.pyc
+*.pdb
+*.dll
+*.exe
+*.user
+*.suo
+.vs/
+Local.props
+backups/
+install-receipt.json
+preview.png
+artifacts/
