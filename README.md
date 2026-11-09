@@ -2,9 +2,13 @@
 
 An Elin game mod for adding a container configuration toggle for only accepting stolen items.
 
-![Only Put Stolen Goods](preview.jpg)
+## Install and use
 
-## Usage
+**[Install on Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3836640580)**
+
+Subscribe on the Workshop page to install through Steam, then enable the mod in Elin.
+
+<img src="preview.jpg" alt="Only Put Stolen Goods" width="360">
 
 Open a container's distribution settings and enable **Only put stolen goods**.
 The option appears below either the normal or advanced filter list. It defaults
@@ -16,7 +20,7 @@ Manual transfers and automatic pickup settings are unchanged.
 Standalone: no other Workshop mods, development bridge, or companion application
 are required. Tested with Elin **23.355**, plugin version **1.0.0**.
 
-## Build and install
+## Build and manual installation
 
 Requirements: Windows, a .NET SDK and the .NET Framework 4.8 targeting pack, and
 your installed copy of Elin with its BepInEx assemblies. Game and dependency DLLs
@@ -72,13 +76,13 @@ mod's patches and logs an error. An incompatible update disables the custom filt
 Removing the mod restores native behavior. Saving without it may discard its
 extra setting. It does not create, delete, transfer, or launder items.
 
-## Workshop
+## Maintainer notes
 
-The package is prepared for upload through Elin's Mod Viewer. Its initial upload
-visibility is explicitly **Private** for reviewing the listing; this source
-repository is public. The manifest's `version` is the tested game compatibility
-version, separate from the plugin's own version. Keep the package ID unchanged
-when updating. Rebuild the thumbnail with `build_icon.ps1` if desired.
+The mod is published on Steam Workshop. This source tree's package template uses
+**Private** visibility for reviewing a new upload; set it to **Public** before
+updating the published release. The manifest's `version` is the tested game
+compatibility version, separate from the plugin's own version. Keep the package ID
+unchanged when updating. Rebuild the thumbnail with `build_icon.ps1` if desired.
 
 ---
 
@@ -86,7 +90,11 @@ when updating. Rebuild the thumbnail with `build_icon.ps1` if desired.
 
 コンテナの振り分け設定に「Only put stolen goods（盗品のみ入れる）」チェックボックスを追加するElin用MODです。
 
-### 使い方
+### インストールと使い方
+
+**[Steamワークショップからインストール](https://steamcommunity.com/sharedfiles/filedetails/?id=3836640580)**
+
+ワークショップのページでサブスクライブし、ElinのMOD一覧で有効にしてください。
 
 コンテナの振り分け設定でチェックを入れると、そのコンテナには盗品だけが入るようになります。
 通常・高度なフィルター一覧の下に表示され、初期状態はオフです。
