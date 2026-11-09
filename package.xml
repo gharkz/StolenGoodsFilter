@@ -17,6 +17,7 @@ Now you can set up inventory containers that only take stolen goods, so there's 
 - Give those containers higher priority than your normal inventory containers so the stolen goods go in these first.
 
 That's all, Enjoy!
+
 No other mods required. The checkbox follows Elin's English, Japanese, or Simplified Chinese language setting. Existing category and word filters still apply.
 
 Source: https://github.com/gharkz/StolenGoodsFilter
@@ -31,6 +32,7 @@ Source: https://github.com/gharkz/StolenGoodsFilter
 - そのコンテナの優先度を通常の持ち物用コンテナより高くすると、盗品が優先的に入るようになります。
 
 設定はこれだけです。お楽しみください！
+
 他のMODは不要です。チェックボックスはゲームの言語設定に合わせて英語・日本語・簡体字中国語で表示されます。既存のカテゴリ・単語フィルターも適用されます。
 
 ソースコード: https://github.com/gharkz/StolenGoodsFilter
