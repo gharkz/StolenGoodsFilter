@@ -8,11 +8,33 @@
   <tags>General,QoL,Utility,english,japanese,schinese</tags>
   <visibility>Private</visibility>
   <description>
-Adds an "Only put stolen goods" checkbox to container distribution settings. Enabled containers accept only stolen items, respecting existing filters and priorities. No other mods required.
-UI label follows the game's English, Japanese, or Simplified Chinese language setting.
+[quote]
+Tired of figuring out which items in your bag are stolen when selling them to the thieves' guild for contribution points?
 
-コンテナの振り分け設定に「盗品のみ入れる」チェックボックスを追加します。有効にしたコンテナには盗品だけが入り、既存のフィルターと優先度も適用されます。他のMODは不要です。
-チェックボックスはゲームの言語設定に合わせて英語・日本語・簡体字中国語で表示されます。
+Now you can set up inventory containers that only take stolen goods, so there's no more tedious manual selection of your plunder!
+
+- Just give your designated stolen goods pouches/backpacks the "Only put stolen goods" enabled checkmark.
+- Give those containers higher priority than your normal inventory containers so the stolen goods go in these first.
+
+That's all, Enjoy!
+No other mods required. The checkbox follows Elin's English, Japanese, or Simplified Chinese language setting. Existing category and word filters still apply.
+
+Source: https://github.com/gharkz/StolenGoodsFilter
+[/quote]
+
+[quote]
+盗賊ギルドで盗品を売って貢献度を稼ぐとき、バッグの中から盗品を探し出すのが面倒ではありませんか？
+
+このMODを使えば、盗品だけを受け入れる持ち物用コンテナを設定できます。戦利品を手作業で仕分ける手間はもう不要です！
+
+- 盗品用にするポーチやバックパックの「盗品のみ入れる」にチェックを入れてください。
+- そのコンテナの優先度を通常の持ち物用コンテナより高くすると、盗品が優先的に入るようになります。
+
+設定はこれだけです。お楽しみください！
+他のMODは不要です。チェックボックスはゲームの言語設定に合わせて英語・日本語・簡体字中国語で表示されます。既存のカテゴリ・単語フィルターも適用されます。
+
+ソースコード: https://github.com/gharkz/StolenGoodsFilter
+[/quote]
   </description>
   <builtin>false</builtin>
 </Meta>

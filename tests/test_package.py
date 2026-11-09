@@ -18,8 +18,14 @@ class PackageControls(unittest.TestCase):
         self.assertEqual(meta.findtext('version'), '0.23.355')
         self.assertEqual(meta.findtext('visibility'), 'Private')
         text = meta.findtext('description').strip()
-        self.assertTrue(text.startswith('Adds an "Only put stolen goods"'))
-        self.assertIn('\n\nコンテナ', text)
+        self.assertEqual(text.count('[quote]'), 2)
+        self.assertEqual(text.count('[/quote]'), 2)
+        english, japanese = text.split('[/quote]')[:2]
+        self.assertIn('Only put stolen goods', english)
+        self.assertNotIn('盗賊ギルド', english)
+        self.assertIn('盗賊ギルド', japanese)
+        self.assertIn('\n\nSource:', english)
+        self.assertIn('\n\nソースコード:', japanese)
         self.assertIn('他のMODは不要です。', text)
 
     def test_jpeg_thumbnail(self):
