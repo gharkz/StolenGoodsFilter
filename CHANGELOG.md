@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.2 — 2026-11-13
+
+- Darken Reject mode text for better contrast against the distribution menu and refresh all nine screenshots.
+- 日本語: 「盗品を拒否」の文字色を濃い赤に変更し、9枚の画像を更新。
+- 简体中文：加深“拒绝赃物”的红色，提高对比度，并更新九张截图。
+
 ## 1.1.1 — 2026-11-13
 
 - Use a spaced hyphen in all three setting labels. Retake the nine screenshots with inventory and ability windows hidden and tighter crops.

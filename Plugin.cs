@@ -11,7 +11,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace StolenGoodsFilter
 {
-    [BepInPlugin(Id, "Stolen Goods Filter", "1.1.1")]
+    [BepInPlugin(Id, "Stolen Goods Filter", "1.1.2")]
     public sealed class Plugin : BaseUnityPlugin
     {
         public const string Id = "gharkz.stolengoodsfilter";
@@ -150,7 +150,7 @@ namespace StolenGoodsFilter
             }
             var value = options[(int)mode];
             if (colored && mode != StolenMode.Allow)
-                value = mode == StolenMode.Only ? "<color=#006579>" + value + "</color>" : value.TagColor(FontColor.Bad);
+                value = mode == StolenMode.Only ? "<color=#006579>" + value + "</color>" : "<color=#8B1616>" + value + "</color>";
             return heading + value;
         }
 
