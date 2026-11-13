@@ -22,7 +22,7 @@ Subscribe on the Workshop page to install through Steam, then enable the mod in 
 Open a carried or base container’s distribution settings and click **Stolen Items Setting** to cycle **Allow → Only → Reject**. Use Only for your loot bag, or Reject to prevent stolen stacks from wasting slots in ordinary base storage. Higher-priority containers are filled first. Existing category and word filters still apply.
 
 Standalone: no other Workshop mods, development bridge, or companion application
-are required. Tested with Elin **23.355**, plugin version **1.1.0**.
+are required. Tested with Elin **23.355**, plugin version **1.1.1**.
 
 ### Distribution settings
 
@@ -138,7 +138,7 @@ unchanged when updating. Rebuild the thumbnail with `build_icon.ps1` if desired.
 盗品用コンテナの優先度を高くすると、条件に合う盗品が優先的に入ります。
 手動での移動や自動拾得の設定は変更しません。他のMODや開発用ツールは不要です。
 
-Elin **23.355**、MODバージョン **1.1.0**で動作確認しています。
+Elin **23.355**、MODバージョン **1.1.1**で動作確認しています。
 
 ### ビルドと導入
 
@@ -183,7 +183,7 @@ MODを外してセーブすると、この追加設定が失われる場合が�
 
 [三种语言的设置截图](#distribution-settings) · [更新日志](CHANGELOG.md)
 
-已在Elin **23.355**、模组版本 **1.1.0**中测试。
+已在Elin **23.355**、模组版本 **1.1.1**中测试。
 
 ### 手动构建与安装
 

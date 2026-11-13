@@ -11,7 +11,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace StolenGoodsFilter
 {
-    [BepInPlugin(Id, "Stolen Goods Filter", "1.1.0")]
+    [BepInPlugin(Id, "Stolen Goods Filter", "1.1.1")]
     public sealed class Plugin : BaseUnityPlugin
     {
         public const string Id = "gharkz.stolengoodsfilter";
@@ -144,9 +144,9 @@ namespace StolenGoodsFilter
             string[] options;
             switch (languageCode)
             {
-                case "JP": heading = "盗品の設定: "; options = new[] { "盗品を許可", "盗品のみ", "盗品を拒否" }; break;
-                case "CN": heading = "赃物设置: "; options = new[] { "允许赃物", "仅限赃物", "拒绝赃物" }; break;
-                default: heading = "Stolen Items Setting: "; options = new[] { "Allow Stolen Items", "Stolen Items Only", "Reject Stolen Items" }; break;
+                case "JP": heading = "盗品の設定 - "; options = new[] { "盗品を許可", "盗品のみ", "盗品を拒否" }; break;
+                case "CN": heading = "赃物设置 - "; options = new[] { "允许赃物", "仅限赃物", "拒绝赃物" }; break;
+                default: heading = "Stolen Items Setting - "; options = new[] { "Allow Stolen Items", "Stolen Items Only", "Reject Stolen Items" }; break;
             }
             var value = options[(int)mode];
             if (colored && mode != StolenMode.Allow)

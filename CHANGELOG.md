@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1 — 2026-11-13
+
+- Use a spaced hyphen in all three setting labels. Retake the nine screenshots with inventory and ability windows hidden and tighter crops.
+- 日本語: 設定名の区切りを空白付きハイフンに変更し、余分なウィンドウを隠した9枚の画像に更新。
+- 简体中文：设置标签改用带空格的连字符，并更新隐藏背包和技能窗口后的九张截图。
+
 ## 1.1.0, 2026-11-13
 
 - Replace the old gallery with nine fresh in-game screenshots: Allow, Only, Reject in English, Japanese, then Chinese.
@@ -52,4 +58,3 @@
 - 可与现有的类别筛选、关键词筛选和物品分配优先度配合使用。
 - 支持随身容器、共享存储以及存放物品时的目标容器选择。
 - 设置独立于游戏原有标记保存，并支持复制。
-
