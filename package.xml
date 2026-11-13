@@ -11,12 +11,12 @@
 [quote]
 Tired of picking stolen loot out of your bags before selling it to the thieves' guild for contribution points?
 
-Give your plunder a bag of its own—or keep it out of your other containers. Works with both carried containers and containers at your base.
+Give your plunder a bag of its own - or keep it out of your other containers. Works with both carried containers and containers at your base.
 
 Click "Stolen Items Setting" in a container's distribution settings to cycle through:
-• Allow Stolen Items — accept stolen and ordinary goods.
-• Stolen Items Only — reserve the container for stolen loot.
-• Reject Stolen Items — keep stolen goods out, saving base-container slots from extra stacks of stolen items.
+• Allow Stolen Items - accept stolen and ordinary goods.
+• Stolen Items Only - reserve the container for stolen loot.
+• Reject Stolen Items - keep stolen goods out, saving base-container slots from extra stacks of stolen items.
 
 Give your stolen-loot bag higher priority to fill it first. Your existing category and word filters still apply. Previously enabled filters stay "Stolen Items Only"; other containers default to "Allow Stolen Items".
 
@@ -31,9 +31,9 @@ Source: https://github.com/gharkz/StolenGoodsFilter
 盗品専用のバッグを用意したり、ほかのコンテナには盗品が入らないようにしたりできます。持ち物内のコンテナにも、拠点のコンテナにも対応します。
 
 コンテナの振り分け設定で「盗品の設定」をクリックすると、次の順に切り替わります。
-• 盗品を許可 — 盗品も通常の品物も受け入れます。
-• 盗品のみ — 盗品専用にします。
-• 盗品を拒否 — 盗品を受け入れず、通常品とは別の盗品スタックで拠点コンテナの枠が埋まるのを防ぎます。
+• 盗品を許可 - 盗品も通常の品物も受け入れます。
+• 盗品のみ - 盗品専用にします。
+• 盗品を拒否 - 盗品を受け入れず、通常品とは別の盗品スタックで拠点コンテナの枠が埋まるのを防ぎます。
 
 盗品用バッグの優先度を高くすると、先に振り分けられます。既存のカテゴリ・単語フィルターも適用されます。従来の有効設定は「盗品のみ」を維持し、それ以外は「盗品を許可」が初期設定です。
 
@@ -48,9 +48,9 @@ Source: https://github.com/gharkz/StolenGoodsFilter
 给赃物准备一个专用背包，或者让其他容器拒收赃物。随身容器和基地容器均适用。
 
 在容器的分类设置中点击“赃物设置”，依次切换：
-• 允许赃物 — 接收赃物和普通物品。
-• 仅限赃物 — 专门存放赃物。
-• 拒绝赃物 — 不接收赃物，避免赃物另占堆叠、挤占基地容器的格子。
+• 允许赃物 - 接收赃物和普通物品。
+• 仅限赃物 - 专门存放赃物。
+• 拒绝赃物 - 不接收赃物，避免赃物另占堆叠、挤占基地容器的格子。
 
 提高赃物专用背包的优先度，就会优先放入其中。现有的类别和关键词筛选仍然有效。原先启用的设置保持为“仅限赃物”，其他容器默认为“允许赃物”。
 
