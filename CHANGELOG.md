@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.0, 2026-11-13
+
+- Replace the old gallery with nine fresh in-game screenshots: Allow, Only, Reject in English, Japanese, then Chinese.
+- Replace the checkbox with a cycling Allow Stolen Items → Stolen Items Only → Reject Stolen Items setting. Only uses darker cyan for menu contrast; Reject uses native red.
+- Preserve existing enabled filters as Only and disabled/unset filters as Allow. Copying settings and saves preserve all three modes; existing vanilla filters still apply.
+- 日本語: チェックボックスを「盗品を許可 → 盗品のみ → 盗品を拒否」の切替に変更。既存の設定を保持し、保存・設定コピーにも対応しました。
+- 简体中文：复选框改为“允许赃物 → 仅限赃物 → 拒绝赃物”循环切换。保留旧设置，支持保存和复制，原有筛选条件仍然生效。
+
+
 ## 1.0.1 — 2026-11-09
 
 - Localized the distribution checkbox for Japanese and Simplified Chinese;
@@ -43,3 +52,4 @@
 - 可与现有的类别筛选、关键词筛选和物品分配优先度配合使用。
 - 支持随身容器、共享存储以及存放物品时的目标容器选择。
 - 设置独立于游戏原有标记保存，并支持复制。
+

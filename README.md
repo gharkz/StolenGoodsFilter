@@ -1,5 +1,12 @@
 # Stolen Goods Filter
 
+**1.1.0 update:** Click **Stolen Items Setting** to cycle **Allow Stolen Items → Stolen Items Only → Reject Stolen Items**. Only is cyan; Reject is red. Previously enabled filters remain Only; disabled/unset filters become Allow. All native distribution filters still apply. Direct manual transfers remain unaffected.
+
+**日本語:** 「盗品の設定」をクリックすると「盗品を許可 → 盗品のみ → 盗品を拒否」と切り替わります。既存の有効設定は「盗品のみ」、無効・未設定は「盗品を許可」になります。
+
+**简体中文：** 点击“赃物设置”依次切换“允许赃物 → 仅限赃物 → 拒绝赃物”。原先启用的设置保持为“仅限赃物”，关闭或未设置时为“允许赃物”。
+
+
 An Elin game mod for adding a container configuration toggle for only accepting stolen items.
 
 Japanese and Simplified Chinese translations provided by Codex (AI).
@@ -12,23 +19,36 @@ Subscribe on the Workshop page to install through Steam, then enable the mod in 
 
 <img src="preview.jpg" alt="Only Put Stolen Goods" width="360">
 
-Open a container's distribution settings and enable **Only put stolen goods**.
-The option appears below either the normal or advanced filter list. It defaults
-to off. The toggle reads **盗品のみ入れる** in Japanese, **仅存放赃物** in
-Simplified Chinese, and **Only put stolen goods** in English or other languages.
-Enabled containers accept only items with the game's stolen status;
-existing category filters, word filters, and priorities still apply. Give your
-stolen-goods container a higher priority to route eligible items there first.
-Manual transfers and automatic pickup settings are unchanged.
+Open a carried or base container’s distribution settings and click **Stolen Items Setting** to cycle **Allow → Only → Reject**. Use Only for your loot bag, or Reject to prevent stolen stacks from wasting slots in ordinary base storage. Higher-priority containers are filled first. Existing category and word filters still apply.
 
 Standalone: no other Workshop mods, development bridge, or companion application
-are required. Tested with Elin **23.355**, plugin version **1.0.1**.
+are required. Tested with Elin **23.355**, plugin version **1.1.0**.
 
 ### Distribution settings
 
-| English | 日本語 | 简体中文 |
-| --- | --- | --- |
-| ![English distribution settings](screenshots/distribution-en.png) | ![日本語の振り分け設定](screenshots/distribution-jp.png) | ![简体中文分类设置](screenshots/distribution-cn.png) |
+**English**
+
+![English: Allow](screenshots/01-en-allow.png)
+
+![English: Only](screenshots/02-en-only.png)
+
+![English: Reject](screenshots/03-en-reject.png)
+
+**日本語**
+
+![日本語: Allow](screenshots/04-jp-allow.png)
+
+![日本語: Only](screenshots/05-jp-only.png)
+
+![日本語: Reject](screenshots/06-jp-reject.png)
+
+**简体中文**
+
+![简体中文: Allow](screenshots/07-cn-allow.png)
+
+![简体中文: Only](screenshots/08-cn-only.png)
+
+![简体中文: Reject](screenshots/09-cn-reject.png)
 
 See [CHANGELOG.md](CHANGELOG.md) for release notes in English and Japanese.
 
@@ -66,7 +86,7 @@ dotnet build tests/Controls.csproj -c Release -p:Platform=AnyCPU
 python -m unittest discover -s tests -p test_package.py -v
 ```
 
-The 18 C# controls cover localized labels, filter behavior, vanilla-rule composition, persistence,
+The 43 C# controls cover localized labels, filter behavior, vanilla-rule composition, persistence,
 configuration copying, three native routing patch points, and incompatible IL
 rejection. Four Python controls cover release metadata, thumbnail format/size,
 isolated installation, backup preservation, and wrong-package rejection.
@@ -76,8 +96,7 @@ high-priority bag while ordinary items keep their normal destinations.
 
 ## Persistence and compatibility
 
-The setting is stored as the separate JSON property
-`gharkz.stolengoodsfilter.onlyStolen` on native container window data. No vanilla
+The mode is stored as `gharkz.stolengoodsfilter.stolenMode` on native container window data, while the legacy `gharkz.stolengoodsfilter.onlyStolen` property remains readable. Existing enabled filters map to Only; disabled/unset filters map to Allow. No vanilla
 integer slot or bit flag is repurposed. Config copying preserves the setting.
 
 Harmony patches add early rejection to carried-container selection, shared/base
@@ -100,7 +119,7 @@ unchanged when updating. Rebuild the thumbnail with `build_icon.ps1` if desired.
 
 ## 日本語
 
-コンテナの振り分け設定に「Only put stolen goods（盗品のみ入れる）」チェックボックスを追加するElin用MODです。
+持ち物・拠点のコンテナに「盗品を許可・盗品のみ・盗品を拒否」の切替を追加するElin用MODです。盗品による余分なスタックで拠点の収納枠が埋まるのを防ぐこともできます。
 
 日本語・簡体字中国語の翻訳：Codex（AI翻訳）。
 
@@ -112,14 +131,14 @@ unchanged when updating. Rebuild the thumbnail with `build_icon.ps1` if desired.
 
 [設定画面のスクリーンショット](#distribution-settings)・[更新履歴](CHANGELOG.md)
 
-コンテナの振り分け設定でチェックを入れると、そのコンテナには盗品だけが入るようになります。
+コンテナの振り分け設定で「盗品の設定」をクリックすると、「盗品を許可 → 盗品のみ → 盗品を拒否」と切り替わります。
 通常・高度なフィルター一覧の下に表示され、初期状態はオフです。
-チェックボックスはゲームの言語設定に合わせて英語・日本語・簡体字中国語で表示されます。
+設定はゲームの言語に合わせて英語・日本語・簡体字中国語で表示されます。
 既存のカテゴリ・単語フィルターと優先度も適用されます。
 盗品用コンテナの優先度を高くすると、条件に合う盗品が優先的に入ります。
 手動での移動や自動拾得の設定は変更しません。他のMODや開発用ツールは不要です。
 
-Elin **23.355**、MODバージョン **1.0.1**で動作確認しています。
+Elin **23.355**、MODバージョン **1.1.0**で動作確認しています。
 
 ### ビルドと導入
 
@@ -153,7 +172,7 @@ MODを外してセーブすると、この追加設定が失われる場合が�
 
 在创意工坊页面订阅，然后在Elin的模组列表中启用本模组。
 
-- 打开指定小袋或背包的分类设置，勾选“仅存放赃物”。
+- 在随身或基地容器的分类设置中点击“赃物设置”，切换允许、仅限或拒绝赃物。拒绝模式可避免赃物另占堆叠、浪费基地储存格子。
 - 将该容器的优先度设得比普通随身容器更高，符合条件的赃物就会优先放入其中。
 
 设置完成，祝你游戏愉快！
@@ -164,7 +183,7 @@ MODを外してセーブすると、この追加設定が失われる場合が�
 
 [三种语言的设置截图](#distribution-settings) · [更新日志](CHANGELOG.md)
 
-已在Elin **23.355**、模组版本 **1.0.1**中测试。
+已在Elin **23.355**、模组版本 **1.1.0**中测试。
 
 ### 手动构建与安装
 

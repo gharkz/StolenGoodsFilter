@@ -9,52 +9,52 @@
   <visibility>Private</visibility>
   <description>
 [quote]
-Tired of figuring out which items in your bag are stolen when selling them to the thieves' guild for contribution points?
+Tired of picking stolen loot out of your bags before selling it to the thieves' guild for contribution points?
 
-Now you can set up inventory containers that only take stolen goods, so there's no more tedious manual selection of your plunder!
+Give your plunder a bag of its own—or keep it out of your other containers. Works with both carried containers and containers at your base.
 
-- Just give your designated stolen goods pouches/backpacks the "Only put stolen goods" enabled checkmark.
-- Give those containers higher priority than your normal inventory containers so the stolen goods go in these first.
+Click "Stolen Items Setting" in a container's distribution settings to cycle through:
+• Allow Stolen Items — accept stolen and ordinary goods.
+• Stolen Items Only — reserve the container for stolen loot.
+• Reject Stolen Items — keep stolen goods out, saving base-container slots from extra stacks of stolen items.
 
-That's all, Enjoy!
+Give your stolen-loot bag higher priority to fill it first. Your existing category and word filters still apply. Previously enabled filters stay "Stolen Items Only"; other containers default to "Allow Stolen Items".
 
-No other mods required. The checkbox follows Elin's English, Japanese, or Simplified Chinese language setting. Existing category and word filters still apply.
-
-Japanese and Simplified Chinese translations provided by Codex (AI).
+Manual transfers are unchanged. No other mods required. English, Japanese and Simplified Chinese supported.
 
 Source: https://github.com/gharkz/StolenGoodsFilter
 [/quote]
 
 [quote]
-盗賊ギルドで盗品を売って貢献度を稼ぐとき、バッグの中から盗品を探し出すのが面倒ではありませんか？
+盗賊ギルドで盗品を売って貢献度を稼ぐたびに、バッグから盗品を選び出すのが面倒ではありませんか？
 
-このMODを使えば、盗品だけを受け入れる持ち物用コンテナを設定できます。戦利品を手作業で仕分ける手間はもう不要です！
+盗品専用のバッグを用意したり、ほかのコンテナには盗品が入らないようにしたりできます。持ち物内のコンテナにも、拠点のコンテナにも対応します。
 
-- 盗品用にするポーチやバックパックの「盗品のみ入れる」にチェックを入れてください。
-- そのコンテナの優先度を通常の持ち物用コンテナより高くすると、盗品が優先的に入るようになります。
+コンテナの振り分け設定で「盗品の設定」をクリックすると、次の順に切り替わります。
+• 盗品を許可 — 盗品も通常の品物も受け入れます。
+• 盗品のみ — 盗品専用にします。
+• 盗品を拒否 — 盗品を受け入れず、通常品とは別の盗品スタックで拠点コンテナの枠が埋まるのを防ぎます。
 
-設定はこれだけです。お楽しみください！
+盗品用バッグの優先度を高くすると、先に振り分けられます。既存のカテゴリ・単語フィルターも適用されます。従来の有効設定は「盗品のみ」を維持し、それ以外は「盗品を許可」が初期設定です。
 
-他のMODは不要です。チェックボックスはゲームの言語設定に合わせて英語・日本語・簡体字中国語で表示されます。既存のカテゴリ・単語フィルターも適用されます。
-
-日本語・簡体字中国語の翻訳：Codex（AI翻訳）。
+手動での移動には影響しません。他のMODは不要です。英語・日本語・簡体字中国語に対応。
 
 ソースコード: https://github.com/gharkz/StolenGoodsFilter
 [/quote]
 
 [quote]
-向盗贼公会出售赃物、赚取贡献点数时，是否厌倦了在背包里逐个辨认哪些物品是赃物？
+向盗贼公会出售赃物、赚取贡献点数前，还在背包里逐个挑选赃物吗？
 
-现在，你可以设置只接收赃物的随身容器，再也不用费心手动挑选战利品了！
+给赃物准备一个专用背包，或者让其他容器拒收赃物。随身容器和基地容器均适用。
 
-- 在指定的赃物专用小袋或背包中，勾选“仅存放赃物”。
-- 将这些容器的优先度设得比普通随身容器更高，赃物就会优先放入其中。
+在容器的分类设置中点击“赃物设置”，依次切换：
+• 允许赃物 — 接收赃物和普通物品。
+• 仅限赃物 — 专门存放赃物。
+• 拒绝赃物 — 不接收赃物，避免赃物另占堆叠、挤占基地容器的格子。
 
-设置完成，就是这么简单。祝你游戏愉快！
+提高赃物专用背包的优先度，就会优先放入其中。现有的类别和关键词筛选仍然有效。原先启用的设置保持为“仅限赃物”，其他容器默认为“允许赃物”。
 
-无需其他模组。复选框会根据Elin的语言设置显示为英语、日语或简体中文。现有的类别筛选和关键词筛选仍然有效。
-
-日语和简体中文译文由Codex提供（AI翻译）。
+不影响手动转移物品。无需其他模组。支持英语、日语和简体中文。
 
 源代码: https://github.com/gharkz/StolenGoodsFilter
 [/quote]

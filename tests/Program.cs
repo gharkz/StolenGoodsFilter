@@ -34,9 +34,6 @@ internal static class Program
     [MethodImpl(MethodImplOptions.NoInlining)]
     private static void Run()
     {
-        Check(Plugin.ToggleLabel("JP") == "盗品のみ入れる", "Japanese toggle label");
-        Check(Plugin.ToggleLabel("CN") == "仅存放赃物", "Simplified Chinese toggle label");
-        Check(Plugin.ToggleLabel("EN") == "Only put stolen goods" && Plugin.ToggleLabel("unknown") == Plugin.ToggleLabel(null), "English label and unknown-language fallback");
         var data = new Window.SaveData();
         var item = (Thing)FormatterServices.GetUninitializedObject(typeof(Thing));
         item.trait = new NonDecaying();
@@ -67,6 +64,32 @@ internal static class Program
         Plugin.SetEnabled(loaded, false);
         Check(!JsonConvert.SerializeObject(loaded, settings).Contains(Plugin.SettingKey), "disabled setting omitted from saves");
         Check(!Plugin.Enabled(JsonConvert.DeserializeObject<Window.SaveData>("{}", settings)), "old saves default off");
+        foreach (var mode in new[] { Plugin.StolenMode.Allow, Plugin.StolenMode.Only, Plugin.StolenMode.Reject })
+        {
+            Plugin.SetMode(data, mode);
+            foreach (bool stolen in new[] { false, true })
+            {
+                item.isStolen = stolen;
+                Check(Plugin.PassEarly(data, item) == (mode == Plugin.StolenMode.Allow || (mode == Plugin.StolenMode.Only ? stolen : !stolen)), "mode acceptance " + mode + "/" + stolen);
+                data.onlyRottable = true;
+                Check(!Plugin.PassEarly(data, item), "decay remains enforced " + mode);
+                data.onlyRottable = false;
+            }
+            var roundtrip = JsonConvert.DeserializeObject<Window.SaveData>(JsonConvert.SerializeObject(data, settings), settings);
+            Check(Plugin.GetMode(roundtrip) == mode, "mode persistence " + mode);
+            typeof(Plugin).GetMethod("CopyPostfix", BindingFlags.NonPublic | BindingFlags.Static).Invoke(null, new object[] { copied, data });
+            Check(Plugin.GetMode(copied) == mode, "mode copy " + mode);
+        }
+        var legacy = JsonConvert.DeserializeObject<Window.SaveData>("{\"" + Plugin.SettingKey + "\":true}", settings);
+        Check(Plugin.GetMode(legacy) == Plugin.StolenMode.Only, "legacy true migrates to Only");
+        Check(Plugin.GetMode(JsonConvert.DeserializeObject<Window.SaveData>("{\"" + Plugin.SettingKey + "\":false}", settings)) == Plugin.StolenMode.Allow, "legacy false stays Allow");
+        foreach (var jsonOrder in new[] { "{\"" + Plugin.SettingKey + "\":true,\"" + Plugin.ModeKey + "\":2}", "{\"" + Plugin.ModeKey + "\":2,\"" + Plugin.SettingKey + "\":true}" })
+            Check(Plugin.GetMode(JsonConvert.DeserializeObject<Window.SaveData>(jsonOrder, settings)) == Plugin.StolenMode.Reject, "explicit mode overrides legacy regardless of order");
+        Plugin.SetMode(data, Plugin.StolenMode.Allow);
+        foreach (var mode in new[] { Plugin.StolenMode.Only, Plugin.StolenMode.Reject, Plugin.StolenMode.Allow })
+        { Plugin.Cycle(data); Check(Plugin.GetMode(data) == mode, "cycle " + mode); }
+        foreach (var lang in new[] { "EN", "JP", "CN" })
+            Check(new[] { Plugin.StolenMode.Allow, Plugin.StolenMode.Only, Plugin.StolenMode.Reject }.Select(m => Plugin.ModeLabel(lang, m)).Distinct().Count() == 3, "three localized labels " + lang);
         var allTypes = typeof(Plugin).GetMethod("AllTypes", BindingFlags.NonPublic | BindingFlags.Static);
         var targets = new[] { typeof(ThingContainer), typeof(Zone), typeof(TaskDump) }
             .SelectMany(t => (System.Collections.Generic.IEnumerable<Type>)allTypes.Invoke(null, new object[] { t }))

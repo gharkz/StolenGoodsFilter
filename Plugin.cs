@@ -11,13 +11,15 @@ using Newtonsoft.Json.Serialization;
 
 namespace StolenGoodsFilter
 {
-    [BepInPlugin(Id, "Stolen Goods Filter", "1.0.1")]
+    [BepInPlugin(Id, "Stolen Goods Filter", "1.1.0")]
     public sealed class Plugin : BaseUnityPlugin
     {
         public const string Id = "gharkz.stolengoodsfilter";
         public const string SettingKey = Id + ".onlyStolen";
         private static readonly ConditionalWeakTable<Window.SaveData, Setting> Settings = new ConditionalWeakTable<Window.SaveData, Setting>();
-        private sealed class Setting { public bool OnlyStolen; }
+        public enum StolenMode { Allow, Only, Reject }
+        public const string ModeKey = Id + ".stolenMode";
+        private sealed class Setting { public StolenMode Mode; public bool Explicit; }
         public static int RoutingPatchCount { get; private set; }
         public static bool Installed { get; private set; }
 
@@ -27,18 +29,25 @@ namespace StolenGoodsFilter
             catch (Exception e) { Logger.LogError("Stolen Goods Filter disabled: " + e); }
         }
 
-        public static bool Enabled(Window.SaveData data) => data != null && Settings.TryGetValue(data, out var setting) && setting.OnlyStolen;
-        public static void SetEnabled(Window.SaveData data, bool enabled)
+        public static StolenMode GetMode(Window.SaveData data)
+            => data != null && Settings.TryGetValue(data, out var setting) ? setting.Mode : StolenMode.Allow;
+        public static bool Enabled(Window.SaveData data) => GetMode(data) == StolenMode.Only;
+        public static void SetMode(Window.SaveData data, StolenMode mode)
         {
             if (data == null) throw new ArgumentNullException(nameof(data));
-            if (enabled) Settings.GetValue(data, _ => new Setting()).OnlyStolen = true;
-            else Settings.Remove(data);
+            if (mode < StolenMode.Allow || mode > StolenMode.Reject) throw new ArgumentOutOfRangeException(nameof(mode));
+            var setting = Settings.GetValue(data, _ => new Setting());
+            setting.Mode = mode;
+            setting.Explicit = true;
         }
+        public static void SetEnabled(Window.SaveData data, bool enabled)
+            => SetMode(data, enabled ? StolenMode.Only : StolenMode.Allow);
+        public static void Cycle(Window.SaveData data) => SetMode(data, (StolenMode)(((int)GetMode(data) + 1) % 3));
 
-        // Called at the original onlyRottable test, before word/category acceptance.
-        // Existing noRotten/ownership/priority tests and all later vanilla tests remain intact.
+        // Ownership remains an early gate, so word/category inclusion cannot bypass it.
         public static bool PassEarly(Window.SaveData data, Thing item)
-            => (!Enabled(data) || item.isStolen) && (!data.onlyRottable || item.trait.Decay != 0);
+            => (GetMode(data) == StolenMode.Allow || (GetMode(data) == StolenMode.Only ? item.isStolen : !item.isStolen))
+                && (!data.onlyRottable || item.trait.Decay != 0);
 
         public static void Install()
         {
@@ -126,20 +135,26 @@ namespace StolenGoodsFilter
         {
             // The PC's pickup menu reuses ShowDistribution, but is not a destination box.
             if (__instance.owner.Container.IsPC) return;
-            dis.AddToggle(ToggleLabel(Lang.langCode), Enabled(data), value => SetEnabled(data, value));
+            dis.AddButton(() => ModeLabel(Lang.langCode, GetMode(data), true), () => Cycle(data));
         }
 
-        public static string ToggleLabel(string languageCode)
+        public static string ModeLabel(string languageCode, StolenMode mode, bool colored = false)
         {
+            string heading;
+            string[] options;
             switch (languageCode)
             {
-                case "JP": return "盗品のみ入れる";
-                case "CN": return "仅存放赃物";
-                default: return "Only put stolen goods";
+                case "JP": heading = "盗品の設定: "; options = new[] { "盗品を許可", "盗品のみ", "盗品を拒否" }; break;
+                case "CN": heading = "赃物设置: "; options = new[] { "允许赃物", "仅限赃物", "拒绝赃物" }; break;
+                default: heading = "Stolen Items Setting: "; options = new[] { "Allow Stolen Items", "Stolen Items Only", "Reject Stolen Items" }; break;
             }
+            var value = options[(int)mode];
+            if (colored && mode != StolenMode.Allow)
+                value = mode == StolenMode.Only ? "<color=#006579>" + value + "</color>" : value.TagColor(FontColor.Bad);
+            return heading + value;
         }
 
-        private static void CopyPostfix(Window.SaveData __instance, Window.SaveData data) => SetEnabled(__instance, Enabled(data));
+        private static void CopyPostfix(Window.SaveData __instance, Window.SaveData data) => SetMode(__instance, GetMode(data));
 
         // A genuine namespaced JSON property, not a hashed string/integer flag. The native
         // window data remains unmodified. ResolveContract also handles already-cached contracts.
@@ -148,20 +163,38 @@ namespace StolenGoodsFilter
             if (type != typeof(Window.SaveData) || !(__result is JsonObjectContract contract)) return;
             lock (contract.Properties)
             {
-                if (contract.Properties.GetClosestMatchProperty(SettingKey) != null) return;
-                contract.Properties.Add(new JsonProperty
-                {
-                    PropertyName = SettingKey, PropertyType = typeof(bool), DeclaringType = type,
-                    Readable = true, Writable = true, ValueProvider = new SettingValueProvider(),
-                    ShouldSerialize = target => Enabled((Window.SaveData)target)
-                });
+                if (contract.Properties.GetClosestMatchProperty(SettingKey) == null)
+                    contract.Properties.Add(new JsonProperty
+                    {
+                        PropertyName = SettingKey, PropertyType = typeof(bool), DeclaringType = type,
+                        Readable = true, Writable = true, ValueProvider = new SettingValueProvider(),
+                        ShouldSerialize = target => Enabled((Window.SaveData)target)
+                    });
+                if (contract.Properties.GetClosestMatchProperty(ModeKey) == null)
+                    contract.Properties.Add(new JsonProperty
+                    {
+                        PropertyName = ModeKey, PropertyType = typeof(int), DeclaringType = type,
+                        Readable = true, Writable = true, ValueProvider = new ModeValueProvider(),
+                        ShouldSerialize = target => GetMode((Window.SaveData)target) != StolenMode.Allow
+                    });
             }
+        }
+
+        private sealed class ModeValueProvider : IValueProvider
+        {
+            public object GetValue(object target) => (int)GetMode((Window.SaveData)target);
+            public void SetValue(object target, object value) => SetMode((Window.SaveData)target, (StolenMode)Convert.ToInt32(value));
         }
 
         private sealed class SettingValueProvider : IValueProvider
         {
             public object GetValue(object target) => Enabled((Window.SaveData)target);
-            public void SetValue(object target, object value) => SetEnabled((Window.SaveData)target, value is bool enabled && enabled);
+            public void SetValue(object target, object value)
+            {
+                var setting = Settings.GetValue((Window.SaveData)target, _ => new Setting());
+                // The new field wins regardless of JSON property order.
+                if (!setting.Explicit) setting.Mode = value is bool enabled && enabled ? StolenMode.Only : StolenMode.Allow;
+            }
         }
     }
 }

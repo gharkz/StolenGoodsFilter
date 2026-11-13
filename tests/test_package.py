@@ -21,12 +21,12 @@ class PackageControls(unittest.TestCase):
         self.assertEqual(text.count('[quote]'), 3)
         self.assertEqual(text.count('[/quote]'), 3)
         english, japanese, chinese = text.split('[/quote]')[:3]
-        self.assertIn('Only put stolen goods', english)
+        self.assertIn('Reject Stolen Items', english)
         self.assertNotIn('盗賊ギルド', english)
         self.assertIn('盗賊ギルド', japanese)
         self.assertIn('\n\nSource:', english)
         self.assertIn('\n\nソースコード:', japanese)
-        self.assertIn('仅存放赃物', chinese)
+        self.assertIn('拒绝赃物', chinese)
         self.assertIn('\n\n源代码:', chinese)
         self.assertIn('他のMODは不要です。', text)
 
